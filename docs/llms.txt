@@ -78,4 +78,5 @@
 - [担当実績](https://www.catrare-tech.jp/works/): これまでに担当した開発・運用の実績
 - [自社プロダクト](https://www.catrare-tech.jp/products/): 自社プロダクトの一覧
 - [お知らせ](https://www.catrare-tech.jp/news/): 各アプリのリリース情報やお知らせ
+- [開発状況](https://www.catrare-tech.jp/devlog/): 自社プロダクトの月ごとの開発状況（主な変更と技術のトピック）
 - [プライバシーポリシー](https://www.catrare-tech.jp/privacy/): 公式サイトにおける個人情報の取り扱い

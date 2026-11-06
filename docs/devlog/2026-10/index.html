@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>2026年10月の開発状況 | カトレアテック | Catrare Tech</title>
+  <meta name="description" content="カトレアテックの自社プロダクトの2026年10月の開発状況です。LEDGER・WORKBILL・DEDUCT の機能追加、Ride Metrics・にゃんくらいむの App Store 配信開始と、それぞれの技術のトピックをまとめています。" />
+  <link rel="canonical" href="https://www.catrare-tech.jp/devlog/2026-10/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="カトレアテック" />
+  <meta property="og:title" content="2026年10月の開発状況 | カトレアテック | Catrare Tech" />
+  <meta property="og:description" content="カトレアテックの自社プロダクトの2026年10月の開発状況です。LEDGER・WORKBILL・DEDUCT の機能追加、Ride Metrics・にゃんくらいむの App Store 配信開始と、それぞれの技術のトピックをまとめています。" />
+  <meta property="og:url" content="https://www.catrare-tech.jp/devlog/2026-10/" />
+  <meta property="og:image" content="https://www.catrare-tech.jp/assets/og/site.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="カトレアテック　システム開発と運用を、現場に合うかたちで。" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script src="../../assets/home-init.js"></script>
+  <link rel="stylesheet" href="../../assets/home.css" />
+  <link rel="stylesheet" href="../../assets/devlog.css" />
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+</head>
+
+<body>
+  <a class="ct-skip-link" href="#main">本文へ移動</a>
+
+  <header class="ct-header" id="top">
+    <div class="ct-container ct-header-inner">
+      <a href="../../" class="ct-brand">
+        <img src="../../assets/favicon.png" alt="" width="40" height="40" />
+        <span class="ct-brand-text">
+          <span>カトレアテック</span>
+          <span>Catrare Tech</span>
+        </span>
+      </a>
+
+      <button class="ct-nav-toggle" type="button" aria-controls="ct-nav" aria-expanded="false">
+        <span class="ct-nav-toggle-icon" aria-hidden="true"></span>
+        メニュー
+      </button>
+
+      <nav class="ct-nav" id="ct-nav" aria-label="メイン">
+        <a href="../../#services">サービス</a>
+        <a href="../../works/">担当実績</a>
+        <a href="../../#about">プロフィール</a>
+        <a href="../../#products">プロダクト</a>
+        <a class="ct-nav-cta" href="../../#contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="ct-page-hero">
+      <div class="ct-container">
+        <p class="ct-breadcrumb"><a href="../../">トップ</a> ／ <a href="../">開発状況</a> ／ 2026年10月</p>
+        <h1>2026年10月の開発状況</h1>
+        <p class="ct-page-lead">自社プロダクトの、この1か月の主な変更と技術のトピックです。今月は確定申告準備の DEDUCT を公開し、iPhoneアプリの Ride Metrics とにゃんくらいむの App Store での配信を始めました。</p>
+        <p class="ct-works-note">2026年10月31日時点の内容です。</p>
+      </div>
+    </section>
+
+    <section class="ct-section ct-works-page">
+      <div class="ct-container">
+        <div class="ct-works">
+          <article class="ct-work" id="ledger">
+            <p class="ct-work-label">Webアプリ・公開中</p>
+            <h2>LEDGER（帳簿システム）</h2>
+            <p class="ct-work-period">10月に公開した版：1.5.2 〜 1.19.0（19回）</p>
+            <dl class="ct-work-facts">
+              <div>
+                <dt>今月の主な変更</dt>
+                <dd>
+                  <ul>
+                    <li><strong>振替</strong>：取引の区分に「振替」を追加し、事業⇄個人・事業外の入金・事業用口座どうしの4種類のお金の動きから、事業主貸・事業主借などの2行仕訳を自動で作るようにしました。損益の集計からは外し、貸借対照表・元帳にだけ反映します</li>
+                    <li><strong>償却方法の選択</strong>：定額法に加えて、一括償却資産（3年均等・直接法）と少額減価償却資産の特例を選べるようにし、償却仕訳を年度締めで自動生成するようにしました</li>
+                    <li><strong>消費税</strong>：取引・出金伝票・固定資産・手動仕訳の明細に8種類の消費税区分を持たせ、「売上／仕入 × 区分 × 税率」の集計と、本則課税・簡易課税・2割特例の納付税額を並べる試算の画面を追加しました</li>
+                    <li><strong>インボイス登録年の消費税</strong>：年の途中でインボイス発行事業者に登録した年は、消費税の集計と試算の期間を既定で登録日以後にし、年全体へも切り替えられるようにしました</li>
+                    <li><strong>帳簿一括出力</strong>：仕訳帳・総勘定元帳・残高試算表・損益計算書・貸借対照表・固定資産台帳・年間集計を、年度ごとに ZIP（CSV）または連続印刷で出力できるようにしました</li>
+                    <li><strong>青色申告決算書の2〜4ページ目</strong>：月別の売上・仕入、地代家賃の内訳、減価償却費の計算、期首・期末の貸借対照表など、決算書の2〜4ページ目へ転記する表と印刷用の表示を追加しました</li>
+                    <li><strong>ダッシュボード</strong>：経費率・所得率、手元資金の月数、消費税の納付見込み、売上の取引先集中度などの指標を追加し、月別の経費内訳に固定資産の減価償却費を月割りで積み上げるようにしました</li>
+                    <li>同じ内容の取引の登録前の確認（取引先名は NFKC 正規化して比較）、取引一覧の列見出しでの並べ替えと「詳細な条件」での絞り込み（家事按分あり・支払元・入金先）、DEDUCT への連携フォルダ出力を追加しました</li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt>技術のトピック</dt>
+                <dd>
+                  <ul>
+                    <li><strong>税制の数値はコードに書かない</strong>：消費税の税率・基準額・端数処理の単位は年度別のルールセットにだけ置き、国税庁の一次情報の出典と確認日を記録しています。直書きを検出する静的テストと、国税庁の手引きの設例を実ルールセットで再現する照合テストを用意しました</li>
+                    <li><strong>端数処理は整数で</strong>：税額は税率ごとに1回だけ丸め、税率は basis point（1万分率）の整数で持って浮動小数点を使いません。ダッシュボードの経費率・所得率も千分率の整数で丸め、2つの合計が100.0%になるようにそろえています</li>
+                    <li><strong>月割りの端数を年額に合わせる</strong>：減価償却費の年額 A を n か月に配るとき、k 番目の月を floor(A×k/n) − floor(A×(k−1)/n) とする累積の切捨てで配ります。月ごとの差は1円以内で、配った合計は年額と必ず一致します</li>
+                    <li><strong>決算書の表は1つの純関数から</strong>：青色申告決算書の各表は、画面と印刷で共用する純関数でまとめて組み立て、表どうしの金額が合わないときは警告を出します。印刷が A4 縦で正しく改ページされ、はみ出さないことを E2E で確かめています</li>
+                    <li><strong>既存データの移行</strong>：データベースのスキーマを更新し、既存の取引へ勘定科目の既定の区分を自動で補いました。補完の前後で年間集計・残高・年度締めのスナップショットが1円も変わらないことをテストで固定しています。古いバックアップを復元するときも同じ補完をかけます</li>
+                    <li><strong>ZIP は自前で</strong>：帳簿 CSV は数 MB 程度で圧縮の利点が小さいため、依存ライブラリを足さず、無圧縮（stored）の ZIP を CRC-32 とヘッダーの組み立てだけで書き出しています（PKWARE APPNOTE 準拠・ファイル名は UTF-8）</li>
+                    <li><strong>アプリ間の連携</strong>：DEDUCT との連携は File System Access API で利用者が選んだフォルダを介し、2つのアプリの IndexedDB は分けたままにしています。ファイルはスキーマで検証し、壊れたファイルや、ファイル名と中身の年度の食い違いを検出してから一覧に出します</li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt>主な技術</dt>
+                <dd>TypeScript ／ React 19 ／ Vite ／ Dexie.js（IndexedDB）／ Zod ／ Zustand ／ Tailwind CSS v4 ＋ shadcn/ui（Base UI）／ Vitest ／ Playwright</dd>
+              </div>
+              <div>
+                <dt>関連リンク</dt>
+                <dd><a href="../../ledger/">紹介ページ</a>、<a href="../../apps/ledger/">アプリを開く</a></dd>
+              </div>
+            </dl>
+            <div class="ct-devlog-shots">
+              <figure>
+                <a href="../../ledger/assets/screenshots/11-consumption-tax.webp" target="_blank" rel="noopener"><img src="../../ledger/assets/screenshots/11-consumption-tax.webp" alt="LEDGERの消費税集計。課税売上・課税仕入を消費税区分と税率ごとに集計する" width="1600" height="1373" loading="lazy" /></a>
+                <figcaption>消費税集計</figcaption>
+              </figure>
+              <figure>
+                <a href="assets/ledger-tax-estimate.webp" target="_blank" rel="noopener"><img src="assets/ledger-tax-estimate.webp" alt="LEDGERの納付税額の試算。本則課税・簡易課税・2割特例の3方式で、売上税額・控除対象仕入税額・納付税額の合計と適用の可否を並べて比べる" width="1600" height="1800" loading="lazy" /></a>
+                <figcaption>納付税額の試算</figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="ct-work" id="workbill">
+            <p class="ct-work-label">Webアプリ・公開中</p>
+            <h2>WORKBILL（稼働報告・請求書）</h2>
+            <p class="ct-work-period">10月に公開した版：1.4.0 〜 1.12.2（16回）</p>
+            <dl class="ct-work-facts">
+              <div>
+                <dt>今月の主な変更</dt>
+                <dd>
+                  <ul>
+                    <li><strong>注文請書</strong>：契約から注文請書を作成・発行・印刷できるようにしました。データとバックアップの形式を更新し、更新前のバックアップもそのまま復元できるようにしています</li>
+                    <li><strong>打刻</strong>：稼働カレンダーに開始・終了の打刻を付け、終了時刻なし（稼働中）の稼働を保存できるようにしました</li>
+                    <li><strong>稼働実績と月末推定</strong>：月の実績と、2通りの月末推定（実績平均のペース・標準稼働時間で働いた場合）を1つの表にまとめ、各行に精算幅や目安に対する位置のグラフを入れました</li>
+                    <li><strong>環境間の移行</strong>：案件ごとの稼働カレンダーを書き出し、別のブラウザの WORKBILL へ、取り込み先のデータを消さずに追加できるようにしました</li>
+                    <li>稼働日の一括入力、前回の作業内容の初期表示、契約の複製、バックアップの保存先の用途別設定を追加しました</li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt>技術のトピック</dt>
+                <dd>
+                  <ul>
+                    <li><strong>移行ファイルの取り込み</strong>：ファイルは保存用のスキーマから派生させた、余分な項目を許さない厳密なスキーマで検証し、取引先・案件を「ID が一致 → 名前が一致 → 新しく作る」の順で対応付けます。取り込み計画を作り、確定の直前にもう一度計画を作って照合してから、1つのトランザクションで書き込みます</li>
+                    <li><strong>書類は発行時点で凍結</strong>：請求書・稼働報告書と同じく、注文請書も発行した時点の宛先・受注者をスナップショットとして保存し、訂正は取消して作り直すライフサイクルにしています</li>
+                    <li><strong>保存先の設定</strong>：バックアップ・自動バックアップ・書き出しの保存先フォルダを File System Access API で用途ごとに持ち、対応していないブラウザや権限がないときは通常のダウンロードに切り替えます</li>
+                    <li><strong>時間は分の整数</strong>：稼働時間は分単位の整数で扱い、丸め・報酬・月末推定の計算は画面から切り離した純関数に集めてテストしています</li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt>主な技術</dt>
+                <dd>TypeScript ／ React 19 ／ Vite ／ Dexie.js（IndexedDB）／ Zod ／ Zustand ／ Tailwind CSS v4 ＋ shadcn/ui（Base UI）／ Vitest ／ Playwright</dd>
+              </div>
+              <div>
+                <dt>関連リンク</dt>
+                <dd><a href="../../workbill/">紹介ページ</a>、<a href="../../apps/workbill/">アプリを開く</a></dd>
+              </div>
+            </dl>
+            <div class="ct-devlog-shots">
+              <figure>
+                <a href="../../workbill/assets/screenshots/03-worklog-calendar.webp" target="_blank" rel="noopener"><img src="../../workbill/assets/screenshots/03-worklog-calendar.webp" alt="WORKBILLの稼働カレンダー。上部に稼働実績と月末推定の表とグラフ、その下に日ごとの稼働が並ぶ" width="1600" height="1480" loading="lazy" /></a>
+                <figcaption>稼働カレンダーの稼働実績と月末推定</figcaption>
+              </figure>
+              <figure>
+                <a href="../../workbill/assets/screenshots/08-order-acceptance-print.webp" target="_blank" rel="noopener"><img src="../../workbill/assets/screenshots/08-order-acceptance-print.webp" alt="WORKBILLの注文請書の印刷用表示" width="1600" height="1125" loading="lazy" /></a>
+                <figcaption>注文請書の印刷用表示</figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="ct-work" id="deduct">
+            <p class="ct-work-label">Webアプリ・公開中</p>
+            <h2>DEDUCT（確定申告準備）</h2>
+            <p class="ct-work-period">10月10日に公開。10月に公開した版：1.0.0 〜 1.8.2（12回）</p>
+            <dl class="ct-work-facts">
+              <div>
+                <dt>今月の主な変更</dt>
+                <dd>
+                  <ul>
+                    <li>確定申告の準備アプリとして公開しました</li>
+                    <li>2026年分の制度改正に対応したルールセットを追加しました</li>
+                    <li>国税庁の作成コーナーのマイナポータル連携を前提に、連携で自動入力される分・追加で手入力する分・作成コーナーで確認する分を分けて表示するようにしました</li>
+                    <li>電子的控除証明書（XML）の取り込み、退職所得の源泉徴収票、所得区分の拡充と繰越損失に対応しました</li>
+                    <li>所得税・復興特別所得税の概算と還付・納付の見込み、ふるさと納税の上限の目安を追加しました</li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt>技術のトピック</dt>
+                <dd>
+                  <ul>
+                    <li><strong>年度別ルールセット</strong>：控除額・所得の要件・年齢・率はすべて年度別のルールセットのパラメータにし、実ルールセットの値は国税庁の一次情報で確かめて出典・確認日を記録しています。テストは合成したルールセットで行い、制度の数値に依存させていません</li>
+                    <li><strong>計算結果は保存しない</strong>：控除・税額は入力から毎回計算し直す純関数です。保存するのはサマリーを出力したときのスナップショット（ルールの版・計算エンジンの版・計算日時・アプリの版つき）だけにしています</li>
+                    <li><strong>XML の安全な読み取り</strong>：e-Tax の仕様の電子的控除証明書は DOCTYPE を含むファイルを解析せず（外部エンティティを扱わない）、名前空間に依らずローカル名で要素を探します。読み取りの失敗は理由の種類ごとのエラーで返し、画面に案内を出します</li>
+                    <li><strong>機微な情報の扱い</strong>：医療・障害・家族・所得の情報は外部へ送らず、ログにも出しません。マイナンバーは入力欄を設けず保存しません</li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt>主な技術</dt>
+                <dd>TypeScript ／ React 19 ／ Vite ／ Dexie.js（IndexedDB）／ Zod ／ Zustand ／ Tailwind CSS v4 ＋ shadcn/ui（Base UI）／ Vitest ／ Playwright ／ fflate</dd>
+              </div>
+              <div>
+                <dt>関連リンク</dt>
+                <dd><a href="../../deduct/">紹介ページ</a>、<a href="../../apps/deduct/">アプリを開く</a></dd>
+              </div>
+            </dl>
+            <div class="ct-devlog-shots">
+              <figure>
+                <a href="../../deduct/assets/screenshots/07-tax-estimate.webp" target="_blank" rel="noopener"><img src="../../deduct/assets/screenshots/07-tax-estimate.webp" alt="DEDUCTの税額の概算。源泉徴収税額との差を還付される見込みとして表示する" width="1600" height="1500" loading="lazy" /></a>
+                <figcaption>税額の概算・還付の見込み</figcaption>
+              </figure>
+              <figure>
+                <a href="../../deduct/assets/screenshots/08-furusato.webp" target="_blank" rel="noopener"><img src="../../deduct/assets/screenshots/08-furusato.webp" alt="DEDUCTの寄附一覧。ふるさと納税の上限の目安と上限までの残りを表示する" width="1600" height="1500" loading="lazy" /></a>
+                <figcaption>ふるさと納税の上限の目安</figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="ct-work" id="ridemetrics">
+            <p class="ct-work-label">iOSアプリ・App Storeで配信中</p>
+            <h2>Ride Metrics</h2>
+            <p class="ct-work-period">10月23日に App Store で配信を開始</p>
+            <dl class="ct-work-facts">
+              <div>
+                <dt>今月の主な変更</dt>
+                <dd>
+                  <ul>
+                    <li>App Store での配信を始めました</li>
+                    <li>審査（Guideline 2.5.1）の指摘を受け、HealthKit 連携の画面に「Apple Health」と明示し、書き込むデータ（ワークアウトの距離・時間・消費カロリー・GPS ルート）と読み取るデータ（体重）を設定画面に書くようにしました</li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt>技術のトピック</dt>
+                <dd>
+                  <ul>
+                    <li><strong>表記のテスト</strong>：日本語・英語の文言は String Catalog で管理し、英語の画面とプライバシーの説明に「Health」単独の表記が残らないこと、見出し・選択肢に「Apple Health」が入ることを Swift Testing で確かめています</li>
+                    <li><strong>計測ロジックは決定的に</strong>：距離・速度・停止判定などの計算は OS に依存しない Domain 層の純関数にまとめ、同じ GPS ログから同じ結果を再現できるようにアルゴリズムの版を管理しています</li>
+                    <li><strong>端末内で完結</strong>：計測データは SwiftData で端末内にだけ保存し、当方のサーバーや広告・解析の事業者へは送りません。ライドの削除は物理削除です</li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt>主な技術</dt>
+                <dd>Swift 6 ／ SwiftUI ／ SwiftData ／ Core Location ／ Core Motion ／ MapKit ／ HealthKit ／ Swift Testing</dd>
+              </div>
+              <div>
+                <dt>関連リンク</dt>
+                <dd><a href="../../ridemetrics/">紹介ページ</a>、<a href="https://apps.apple.com/jp/app/id6809061164">App Store</a></dd>
+              </div>
+            </dl>
+            <div class="ct-devlog-shots ct-devlog-shots-portrait">
+              <figure>
+                <a href="../../ridemetrics/assets/screenshots/01-top.jpg" target="_blank" rel="noopener"><img src="../../ridemetrics/assets/screenshots/01-top.jpg" alt="Ride Metricsのホーム画面。月間サマリーと直近ライドを表示" width="295" height="640" loading="lazy" /></a>
+                <figcaption>ホーム画面</figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="ct-work" id="nyanclimb">
+            <p class="ct-work-label">iOSゲーム・App Storeで配信中</p>
+            <h2>にゃんくらいむ</h2>
+            <p class="ct-work-period">10月23日に App Store で配信を開始</p>
+            <dl class="ct-work-facts">
+              <div>
+                <dt>今月の主な変更</dt>
+                <dd>
+                  <ul>
+                    <li>App Store での配信を始めました</li>
+                    <li>配信に向けて、AdMob を本番の App ID・広告ユニット ID に切り替え、Info.plist に SKAdNetworkItems を追加しました</li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt>技術のトピック</dt>
+                <dd>
+                  <ul>
+                    <li><strong>広告 ID の切り替え</strong>：Xcode からの実行と単体テストの DEBUG ビルドでは Google 公式のテスト用、TestFlight・App Store の Release ビルドでは本番の広告ユニット ID を <code>#if DEBUG</code> で切り替え、開発中に本番広告を表示しないようにしています。App ID がテスト用でないこと、SKAdNetworkItems の形式と重複をテストで確かめています</li>
+                    <li><strong>ゲームの決まりは純関数</strong>：床の生成・ステージの判定・着地判定・スコアは Domain 層の決定的な関数で、乱数は <code>RandomNumberGenerator</code> を注入して固定シードでテストします。プレイ中の時間はシーンの経過時間で測り、ゲームバランスの設定は版を付けて管理しています</li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt>主な技術</dt>
+                <dd>Swift 6 ／ SpriteKit ／ SwiftUI ／ Core Motion ／ SwiftData ／ Google Mobile Ads（AdMob）・UMP ／ Swift Testing</dd>
+              </div>
+              <div>
+                <dt>関連リンク</dt>
+                <dd><a href="../../nyanclimb/">紹介ページ</a>、<a href="https://apps.apple.com/jp/app/id6809079250">App Store</a></dd>
+              </div>
+            </dl>
+            <div class="ct-devlog-shots ct-devlog-shots-portrait">
+              <figure>
+                <a href="../../nyanclimb/assets/screenshots/01-house.jpg" target="_blank" rel="noopener"><img src="../../nyanclimb/assets/screenshots/01-house.jpg" alt="にゃんくらいむのプレイ画面。最初のステージ「2階建ての家」" width="590" height="1282" loading="lazy" /></a>
+                <figcaption>プレイ画面（2階建ての家）</figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="ct-work" id="platform">
+            <p class="ct-work-label">共通の開発基盤</p>
+            <h2>開発の進め方・共通部品</h2>
+            <dl class="ct-work-facts">
+              <div>
+                <dt>今月の主な変更</dt>
+                <dd>
+                  <ul>
+                    <li><strong>PR ごとの自動チェック</strong>：Web アプリ（LEDGER・WORKBILL・DEDUCT）と共通パッケージへのプルリクエストで、Biome・<code>tsc -b</code>・Vitest・Playwright（Chromium）の E2E を GitHub Actions で自動で実行するようにしました</li>
+                    <li><strong>Content Security Policy</strong>：3つの Web アプリと公式サイトは同じオリジンで配信しているため、すべてのページに CSP を入れ、スクリプトは自サイトのファイルだけを実行するようにしました。解析・広告などの外部スクリプトはサイトのどのページにも置かない方針を設計書に明記しています</li>
+                    <li><strong>依存ライブラリの更新</strong>：3つの Web アプリの主要な依存ライブラリを最新へ更新しました（テストツールの Vitest はメジャーバージョンを更新）。月末の更新では、開発用ツールが間接的に使うライブラリの脆弱性を、修正版への置き換えで解消しました</li>
+                    <li>画面タイトルの説明を「?」ボタンで必要なときだけ表示する、表の横スクロールの目印と「操作」列の固定など、3つのアプリ共通の画面部品を改善しました</li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt>技術のトピック</dt>
+                <dd>
+                  <ul>
+                    <li><strong>変更に応じて対象を選ぶ</strong>：PR の変更ファイルから実行対象を決め、アプリのコードならそのアプリだけ、共通パッケージ（UI・shared・配布ツール）なら3アプリすべて、ロックファイルやワークフローを変えたら全件をマトリクスで実行します。ドキュメントや iOS アプリだけの変更では何も走らせません</li>
+                    <li><strong>CSP をテストで守る</strong>：アプリの CSP はビルド時に meta タグとして入れ、配布物の検査で同じポリシーが1つだけ入っていることを確かめます。E2E ではすべての画面と証憑のプレビューを開き、CSP 違反が起きないことを確認しています。検証ライブラリが実行時のコード生成を試す処理も E2E で違反として見つかったため、その機能を使わない設定にしました</li>
+                    <li><strong>モノレポ</strong>：pnpm ワークスペースで3つの Web アプリと共通パッケージ（UI 部品・共通ロジック・配布ツール・サイト公開ツール）を管理し、<code>--frozen-lockfile</code> でロックファイルとのずれを CI で止めます</li>
+                    <li><strong>設計書とテスト駆動</strong>：どの製品も、設計書と実装計画を先にまとめ、テストケースの表を先にテストへ書き起こしてから実装しています</li>
+                  </ul>
+                </dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+
+        <div class="ct-works-footer">
+          <p>各プロダクトの公開・更新のお知らせは、お知らせ一覧に載せています。</p>
+          <div class="ct-buttons">
+            <a class="ct-button ct-button-primary" href="../">開発状況の一覧へ</a>
+            <a class="ct-button ct-button-secondary" href="../../products/">自社プロダクト</a>
+            <a class="ct-button ct-button-secondary" href="../../news/">お知らせ一覧</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ct-footer">
+    <div class="ct-container ct-footer-inner">
+      <span>© Catrare Tech</span>
+      <span class="ct-footer-links">
+        <a href="../../privacy/">プライバシーポリシー</a>
+        <a href="../../news/">お知らせ一覧</a>
+        <a href="../../devlog/">開発状況</a>
+      </span>
+    </div>
+  </footer>
+  <script src="../../assets/home.js" defer></script>
+</body>
+</html>
