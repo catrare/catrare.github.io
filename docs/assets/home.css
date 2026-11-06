@@ -1171,3 +1171,8 @@ a {
   flex-wrap: wrap;
   gap: 8px 20px;
 }
+
+/* トップの自社プロダクト欄の下のリンク（2つ目以降を詰めて縦に並べる。issue #816） */
+.ct-products-more + .ct-products-more {
+  margin-top: 12px;
+}

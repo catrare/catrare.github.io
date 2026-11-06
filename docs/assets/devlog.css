@@ -1,0 +1,51 @@
+/* 開発状況ページ（devlog/。issue #816）専用。home.css の後に読み込む */
+.ct-devlog-shots {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  margin-top: 24px;
+}
+
+@media (min-width: 768px) {
+  .ct-devlog-shots {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ct-devlog-shots.ct-devlog-shots-single {
+    grid-template-columns: minmax(0, 720px);
+  }
+}
+
+.ct-devlog-shots.ct-devlog-shots-portrait {
+  grid-template-columns: repeat(auto-fill, minmax(0, 280px));
+}
+
+.ct-devlog-shots figure {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--ct-color-border);
+  border-radius: 8px;
+  background: var(--ct-color-surface);
+}
+
+.ct-devlog-shots img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.ct-devlog-shots figcaption {
+  padding: 8px 12px;
+  color: var(--ct-color-muted);
+  font-size: 0.875rem;
+}
+
+.ct-work-facts code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  padding: 0 4px;
+  border-radius: 4px;
+  background: var(--ct-color-surface);
+}
