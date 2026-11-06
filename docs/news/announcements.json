@@ -1,6 +1,16 @@
 {
   "items": [
     {
+      "number": 937,
+      "title": "2026年10月の開発状況を公開しました",
+      "app": "site",
+      "appLabel": "サイト全般",
+      "kind": "info",
+      "kindLabel": "お知らせ",
+      "publishedAt": "2026-11-06",
+      "publishedAtLabel": "2026年11月6日"
+    },
+    {
       "number": 930,
       "title": "にゃんくらいむを App Store で公開しました",
       "app": "nyanclimb",
