@@ -1,6 +1,16 @@
 {
   "items": [
     {
+      "number": 975,
+      "title": "にゃんくらいむ 1.0.1 を公開しました",
+      "app": "nyanclimb",
+      "appLabel": "にゃんくらいむ",
+      "kind": "update",
+      "kindLabel": "アップデート",
+      "publishedAt": "2026-11-15",
+      "publishedAtLabel": "2026年11月15日"
+    },
+    {
       "number": 940,
       "title": "Catrare Ledger 1.20.0 を公開しました",
       "app": "ledger",
