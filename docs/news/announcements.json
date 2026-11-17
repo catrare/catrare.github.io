@@ -1,6 +1,16 @@
 {
   "items": [
     {
+      "number": 988,
+      "title": "Catrare Ledger 1.21.0 を公開しました",
+      "app": "ledger",
+      "appLabel": "Catrare Ledger",
+      "kind": "update",
+      "kindLabel": "アップデート",
+      "publishedAt": "2026-11-17",
+      "publishedAtLabel": "2026年11月17日"
+    },
+    {
       "number": 975,
       "title": "にゃんくらいむ 1.0.1 を公開しました",
       "app": "nyanclimb",
