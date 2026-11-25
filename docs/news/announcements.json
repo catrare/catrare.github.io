@@ -11,16 +11,6 @@
       "publishedAtLabel": "2026年11月25日"
     },
     {
-      "number": 995,
-      "title": "Ride Metrics 1.1.0 を公開しました（ロック画面・Dynamic Island 表示に対応）",
-      "app": "ridemetrics",
-      "appLabel": "Ride Metrics",
-      "kind": "update",
-      "kindLabel": "アップデート",
-      "publishedAt": "2026-11-19",
-      "publishedAtLabel": "2026年11月19日"
-    },
-    {
       "number": 988,
       "title": "Catrare Ledger 1.21.0 を公開しました",
       "app": "ledger",
