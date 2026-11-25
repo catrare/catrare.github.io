@@ -1,6 +1,16 @@
 {
   "items": [
     {
+      "number": 1041,
+      "title": "Catrare Workbill 1.14.0 を公開しました",
+      "app": "workbill",
+      "appLabel": "Catrare Workbill",
+      "kind": "update",
+      "kindLabel": "アップデート",
+      "publishedAt": "2026-11-25",
+      "publishedAtLabel": "2026年11月25日"
+    },
+    {
       "number": 1035,
       "title": "Ride Metrics 1.2.0 を公開しました（ホーム画面・ロック画面のウィジェットに対応）",
       "app": "ridemetrics",
